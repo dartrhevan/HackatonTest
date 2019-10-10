@@ -28,22 +28,41 @@ function parseQueryString(strQuery = window.location.search) {
     return objRes;
 }
 
-function requestToken() {
+function requestToken(code) {
+    let request = new XMLHttpRequest();
+    const tokenRequsetURL = `https://oauth.yandex.ru/token?grant_type=authorization_code&code=${code}`;
+    request.open('POST', tokenRequsetURL, false);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.send();
+    let response = JSON.parse(request.responseText);
+
+    if(!response.hasOwnProperty('access_token')) return null;
+
+    return  response.access_token;
+}
+
+function requestCode() {
     let request = new XMLHttpRequest();
     request.open('GET', codeRequestURL, false);
-    //request.setRequestHeader('Authorization', getToken());
     request.send();
 }
 
-function getToken() {
-    return debugToken;
+function initialize() {//функция, запускаемая при загрузке документа
+    //let token = debugToken;
+    const params = parseQueryString();
+    if(params.hasOwnProperty('code')) {
+        const token = requestToken(params['code']);
+        return requestData(token);
+    }
+    else
+        requestCode();
 }
 
-function requestData() {
+function requestData(token = debugToken) {
     let request = new XMLHttpRequest();
     //request.setRequestHeader('Content-Type')
     request.open('GET', filesURL, false);
-    request.setRequestHeader('Authorization', getToken());
+    request.setRequestHeader('Authorization', token);
     request.send();
     return JSON.parse(request.responseText);
 }
