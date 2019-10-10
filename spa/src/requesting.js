@@ -13,8 +13,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const debugToken = 'AgAAAAA5MmVHAAXomrFvvi_BIEiPshP8mskytpA';
 const applicationId = '3614a67fb38645fe90cc5fe066f84746';
 const codeRequestURL =`https://oauth.yandex.ru/authorize?response_type=code&client_id=${applicationId}`;
-let path = 'disk:/';
-let filesURL = `https://cloud-api.yandex.net/v1/disk/resources?path=${path}`;
+let token = debugToken;
 
 function parseQueryString(strQuery = window.location.search) {
     let strSearch   = strQuery.substr(1),
@@ -29,7 +28,7 @@ function parseQueryString(strQuery = window.location.search) {
 }
 
 function requestToken(code) {
-    let request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     const tokenRequsetURL = `https://oauth.yandex.ru/token?grant_type=authorization_code&code=${code}`;
     request.open('POST', tokenRequsetURL, false);
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -42,24 +41,24 @@ function requestToken(code) {
 }
 
 function requestCode() {
-    let request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', codeRequestURL, false);
     request.send();
 }
 
 function initialize() {//функция, запускаемая при загрузке документа
-    //let token = debugToken;
     const params = parseQueryString();
     if(params.hasOwnProperty('code')) {
-        const token = requestToken(params['code']);
-        return requestData(token);
+        token = requestToken(params['code']);
+        return requestData();
     }
     else
         requestCode();
 }
 
-function requestData(token = debugToken) {
-    let request = new XMLHttpRequest();
+function requestData(path = 'disk:/') {
+    const filesURL = `https://cloud-api.yandex.net/v1/disk/resources?path=${path}`;
+    const request = new XMLHttpRequest();
     //request.setRequestHeader('Content-Type')
     request.open('GET', filesURL, false);
     request.setRequestHeader('Authorization', token);
