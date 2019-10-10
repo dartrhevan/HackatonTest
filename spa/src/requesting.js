@@ -9,6 +9,7 @@
 /*function RequestConfig() {
 
 }*/
+
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const debugToken = 'AgAAAAA5MmVHAAXomrFvvi_BIEiPshP8mskytpA';
 const applicationId = '3614a67fb38645fe90cc5fe066f84746';
@@ -48,4 +49,4 @@ function requestData() {
     return JSON.parse(request.responseText);
 }
 
-//console.log(requestData());
+export {requestData};
