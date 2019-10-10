@@ -9,15 +9,15 @@
 /*function RequestConfig() {
 
 }*/
-let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-let debugToken = 'AgAAAAA5MmVHAAXomrFvvi_BIEiPshP8mskytpA';
-let applicationId = '3614a67fb38645fe90cc5fe066f84746';
-let codeRequestURL =`https://oauth.yandex.ru/authorize?response_type=code&client_id=${applicationId}`;
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const debugToken = 'AgAAAAA5MmVHAAXomrFvvi_BIEiPshP8mskytpA';
+const applicationId = '3614a67fb38645fe90cc5fe066f84746';
+const codeRequestURL =`https://oauth.yandex.ru/authorize?response_type=code&client_id=${applicationId}`;
 let path = 'disk:/';
 let filesURL = `https://cloud-api.yandex.net/v1/disk/resources?path=${path}`;
 
 function parseQueryString(strQuery = window.location.search) {
-    var strSearch   = strQuery.substr(1),
+    let strSearch   = strQuery.substr(1),
         strPattern  = /([^=]+)=([^&]+)&?/ig,
         arrMatch    = strPattern.exec(strSearch),
         objRes      = {};
@@ -26,6 +26,13 @@ function parseQueryString(strQuery = window.location.search) {
         arrMatch = strPattern.exec(strSearch);
     }
     return objRes;
+}
+
+function requestToken() {
+    let request = new XMLHttpRequest();
+    request.open('GET', codeRequestURL, false);
+    //request.setRequestHeader('Authorization', getToken());
+    request.send();
 }
 
 function getToken() {
@@ -38,7 +45,7 @@ function requestData() {
     request.open('GET', filesURL, false);
     request.setRequestHeader('Authorization', getToken());
     request.send();
-    return request.responseText;
+    return JSON.parse(request.responseText);
 }
 
 //console.log(requestData());
