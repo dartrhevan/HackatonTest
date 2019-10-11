@@ -2,11 +2,13 @@ import React from 'react'
 
 const Row = props => {
     return(
-        <div onClick={props.handleClick} className={props.item.type === "dir" ? "row dir" : "row"}>
-            <span id="index">{props.index}</span>
-            <span id="name">{props.item.name}</span>
-            <span id="type">{props.item.type}</span>
-        </div>
+        <tr onClick={props.handleClick} 
+            className={props.item.type === "dir" && "cursor-pointer"} 
+            disabled={props.item.type !== "dir" && false}>
+            <td id="index">{props.index}</td>
+            <td id="name">{props.item.name}</td>
+            <td id="type">{props.item.type === "dir" ? "Папка" : "Файл"}</td>
+        </tr>
     )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Row from './Row'
+import Path from './Path'
 import Disk from '../requesting.js'
 
 class Main extends React.Component {
@@ -13,6 +14,7 @@ class Main extends React.Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.goBack = this.goBack.bind(this);
+        this.goHome = this.goHome.bind(this);
     }
 
     emersion(path)
@@ -28,7 +30,6 @@ class Main extends React.Component {
 
     handleClick(item) {
         this.setState({path: this.deepening(this.state.path, item.name)}, () => {
-            console.log(this.state.path);
             const newData = this.disk.requestData(this.state.path).items;
             this.setState({data: newData});
         });    
@@ -41,29 +42,49 @@ class Main extends React.Component {
         });
     }
 
+    goHome() {
+        this.setState({path: this.state.homePath}, () => {
+            const newData = this.disk.requestData(this.state.path).items;
+            this.setState({data: newData});
+        }); 
+    }
+
     render() {
         return(
             <div id="main">
-                
-                <div id="row-heading">
-                    <span>Номер файла</span>
-                    <span>Название файла</span>
-                    <span>Тип файла</span>
-                </div>
-
                 {
-                    this.state.homePath !== this.state.path && 
-                    <div id="go-back" onClick={this.goBack}>
-                        .../
-                    </div>
+                    this.state.homePath !== this.state.path ?
+                    <Path isBackExists={true} 
+                            goBack={this.goBack}
+                            goHome={this.goHome}/> :
+                    
+                    <Path   goBack={this.goBack}
+                            goHome={this.goHome}/>
                 }
 
-                {this.state.data.map((item, index) => {
-                    return <Row key={index} 
-                                index={index} 
-                                item={item} 
-                                handleClick={ item.type === "dir" && (() => this.handleClick(item))} />
-                })}
+                <div id="main-content">
+                    <div role="main" class="container">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Индекс</th>
+                                    <th scope="col">Имя файла</th>
+                                    <th scope="col">Тип файла</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.data.length === 0 ? "Каталог пуст..." :
+                                    this.state.data.map((item, index) => {
+                                    return <Row key={index} 
+                                                index={index} 
+                                                item={item} 
+                                                handleClick={ item.type === "dir" && (() => this.handleClick(item))} />
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         )    
     }
