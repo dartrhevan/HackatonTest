@@ -13,6 +13,8 @@ code {
 }
 
 #header {
+  position: fixed;
+  top: 0;
   --heightSize: 60px;
   width: 100%;
   height: var(--heightSize);
@@ -31,6 +33,7 @@ code {
   width: 70%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  margin-top: 90px;
   margin-bottom: 90px;
 }
 
@@ -46,7 +49,7 @@ code {
   line-height: var(--heightSize);
 }
 
-#row {
+.row {
   display: flex;
   justify-content: space-between;
   --heightSize: 50px;
@@ -72,4 +75,19 @@ code {
   padding-right: 30px;
   background: rgba(105, 182, 233, 0.5);
   border-radius: 5px;
+}
+
+.dir {
+  display: flex;
+  justify-content: space-between;
+  --heightSize: 50px;
+  width: 100%;
+  height: var(--heightSize);
+  border: solid 1px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 10px;
+  line-height: var(--heightSize);
+  padding-left: 30px;
+  padding-right: 30px;
+  background: green;
 }
