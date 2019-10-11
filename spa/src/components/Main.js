@@ -15,11 +15,22 @@ class Main extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    emersion(path, folder)
+    {
+        return path.substring(0, path.length - folder.length - 1);
+    }
+
+    deepening(path, folder)
+    {
+        return path+'/'+folder;
+    }
 
     handleClick(item) {
         /*this.state.path = addPath(this.state.path, item.name);
         this.state.data = this.disk.requestData().items;*/
-        this.setState({path: addPath(this.state.path, item.name), data: this.disk.requestData().items});
+        this.setState({path: this.deepening(this.state.path, item.name), 
+            data: this.disk.requestData(this.state.path).items});
+            //console.log(this.state.path);
     }
 
     render() {
@@ -31,20 +42,10 @@ class Main extends React.Component {
                     <span>Тип файла</span>
                 </div>
                 {this.state.data.map((item, index) => {
-                    return <Row key={index} index={index} item={item} handleClick={this.handleClick} />
+                    return <Row key={index} index={index} item={item} handleClick={() => this.handleClick(item)} />
                 })}
             </div>
         )    
-    }
-
-    emersion(path, folder)
-    {
-        return path.substring(0, path.length - folder.length - 1);
-    }
-
-    deepening(path, folder)
-    {
-        return path+'/'+folder;
     }
 }
 
