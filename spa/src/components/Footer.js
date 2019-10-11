@@ -6,8 +6,11 @@ function Footer() {
             <p className="mb-1">© 2019 HACKATON BEST URFU 2019 - IO.SYS</p>
             <ul className="list-inline">
                 <li className="list-inline-item"><a href="https://vk.com/feelosof">Воложанин Станислав</a></li>
+                <a>| </a>
                 <li className="list-inline-item"><a href="https://vk.com/id240643669">Статункин Владимир</a></li>
+                <a>| </a>
                 <li className="list-inline-item"><a href="https://vk.com/nordennavic">Ткачук Денис</a></li>
+                <a>| </a>
                 <li className="list-inline-item"><a href="https://vk.com/alexpopovru">Попов Александр</a></li>
             </ul>
         </footer>

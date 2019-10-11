@@ -66,12 +66,13 @@ class Main extends React.Component {
 
                 <div id="main-content">
                     <div role="main" className="container">
-                        <table className="table table-hover">
+                        <table className="table table-hover" >
                             <thead>
                                 <tr>
-                                    <th scope="col">Индекс</th>
-                                    <th scope="col">Имя файла</th>
-                                    <th scope="col">Тип файла</th>
+                                    <th class="w-5" scope="col"></th>
+                                    <th class="w-50" scope="col">Имя</th>
+                                    <th class="w-20" scope="col">Дата изменения</th>
+                                    <th class="w-20" scope="col">Время изменения</th>
                                 </tr>
                             </thead>
                             <tbody>
