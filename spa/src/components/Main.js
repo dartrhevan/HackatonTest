@@ -15,8 +15,11 @@ class Main extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        
+
+    handleClick(item) {
+        /*this.state.path = addPath(this.state.path, item.name);
+        this.state.data = this.disk.requestData().items;*/
+        this.setState({path: addPath(this.state.path, item.name), data: this.disk.requestData().items});
     }
 
     render() {
