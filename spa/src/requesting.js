@@ -1,4 +1,4 @@
-class Disk {
+export default class Disk {
     constructor() {
         const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         const debugToken = 'AgAAAAA5MmVHAAXomrFvvi_BIEiPshP8mskytpA';
@@ -43,12 +43,18 @@ class Disk {
     }
 
     requestCode() {
-        const codeRequestURL =`https://oauth.yandex.ru/authorize?response_type=code&client_id=${applicationId}`;
+        const codeRequestURL =`https://oauth.yandex.ru/authorize?response_type=code&client_id=${this.applicationId}`;
         const request = new XMLHttpRequest();
         request.open('GET', codeRequestURL, false);
         request.send();
     }
 
+    resetSearchString() {
+        let res = '?';
+        for(const pa of this.params.keys())
+            res += `${pa}=${this.params[pa]}&`;
+        window.location.search = res;
+    }
     /*initialize() {//функция, запускаемая при загрузке документа
         const params = parseQueryString();
         if(params.hasOwnProperty('code')) {
@@ -66,7 +72,10 @@ class Disk {
         request.open('GET', filesURL, false);
         request.setRequestHeader('Authorization', this.token);
         request.send();
-        return JSON.parse(request.responseText);
+        //console.log(request.responseText);
+        const resp = JSON.parse(request.responseText);
+        console.log(resp);
+        return resp._embedded;
     }
 }
 
