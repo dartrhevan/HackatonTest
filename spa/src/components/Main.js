@@ -27,6 +27,16 @@ class Main extends React.Component {
             </div>
         )    
     }
+
+    emersion(path, folder)
+    {
+        return path.substring(0, path.length - folder.length - 1);
+    }
+
+    deepening(path, folder)
+    {
+        return path+'/'+folder;
+    }
 }
 
 export default Main;
