@@ -8,7 +8,8 @@ class Main extends React.Component {
 		this.disk = new Disk();
         this.state = {
             data: this.disk.requestData().items,
-            path: this.disk.path
+            path: this.disk.path,
+            homePath: this.disk.path
         }
         this.handleClick = this.handleClick.bind(this);
         this.goBack = this.goBack.bind(this);
@@ -50,12 +51,18 @@ class Main extends React.Component {
                     <span>Тип файла</span>
                 </div>
 
-                <div id="go-back" onClick={this.goBack}>
-                    .../
-                </div>
+                {
+                    this.state.homePath !== this.state.path && 
+                    <div id="go-back" onClick={this.goBack}>
+                        .../
+                    </div>
+                }
 
                 {this.state.data.map((item, index) => {
-                    return <Row key={index} index={index} item={item} handleClick={() => this.handleClick(item)} />
+                    return <Row key={index} 
+                                index={index} 
+                                item={item} 
+                                handleClick={ item.type === "dir" && (() => this.handleClick(item))} />
                 })}
             </div>
         )    
