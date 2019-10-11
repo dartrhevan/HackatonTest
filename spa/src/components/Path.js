@@ -6,11 +6,11 @@ function Path() {
             <div class="row">
                 <div class="col-2">
                     <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                        <button type="button" class="btn btn-secondary">Home</button>
                         <button type="button" class="btn btn-secondary">Back</button>
+                        <button type="button" class="btn btn-secondary">Home</button>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-10">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -19,7 +19,6 @@ function Path() {
                         </ol>
                     </nav>
                 </div>
-
             </div>
         </div>
 
