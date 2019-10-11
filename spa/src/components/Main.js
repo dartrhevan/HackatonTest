@@ -25,7 +25,9 @@ class Main extends React.Component {
 
     deepening(path, folder)
     {
-        return path + folder;
+        if (path[path.length - 1] === '/')
+            return path + folder;
+        return path + '/' + folder;
     }
 
     handleClick(item) {
@@ -63,8 +65,8 @@ class Main extends React.Component {
                 }
 
                 <div id="main-content">
-                    <div role="main" class="container">
-                        <table class="table table-hover">
+                    <div role="main" className="container">
+                        <table className="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">Индекс</th>

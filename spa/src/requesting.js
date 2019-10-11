@@ -74,7 +74,7 @@ export default class Disk {
         request.send();
         //console.log(request.responseText);
         const resp = JSON.parse(request.responseText);
-        console.log(resp);
+        //console.log(resp);
         return resp._embedded;
     }
 }
