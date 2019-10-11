@@ -18,11 +18,8 @@ function Header() {
                             <a class="nav-link" href="#">Link</a>
                         </li>
                     </ul>
-                    
                 </div>
-                
             </div>
-            
         </nav>
     )
 }
