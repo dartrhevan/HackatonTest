@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Path(props) {
+const Path = props => {
     return (
         <div id="path">
             <div className="container">

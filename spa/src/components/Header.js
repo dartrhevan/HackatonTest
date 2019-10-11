@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Header() {
+const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div className="container">

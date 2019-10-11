@@ -1,9 +1,7 @@
 import React from 'react'
+import dateFormat from 'dateformat'
 
 const Row = props => {
-    var dateFormat = require('dateformat');
-    var now = new Date();
-
     return(
         <tr onClick={props.handleClick} 
             className={props.item.type === "dir" && ("bg-light text-dark cursor-pointer")} 
