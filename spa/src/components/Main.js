@@ -9,8 +9,14 @@ class Main extends React.Component {
         super();
 		this.disk = new Disk();
         this.state = {
-            data: this.disk.requestData().items
+            data: this.disk.requestData().items,
+            path: this.disk.path
         }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        
     }
 
     render() {
@@ -22,7 +28,7 @@ class Main extends React.Component {
                     <span>Тип файла</span>
                 </div>
                 {this.state.data.map((item, index) => {
-                    return <Row key={index} index={index} item={item}/>
+                    return <Row key={index} index={index} item={item} handleClick={this.handleClick} />
                 })}
             </div>
         )    
