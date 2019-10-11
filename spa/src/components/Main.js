@@ -1,31 +1,38 @@
 import React from 'react'
 import Row from './Row'
+import 'react-bootstrap'
 import Disk from '../requesting.js'
-
-//import {items} from '../response'
 
 class Main extends React.Component {
     constructor() {
         super();
-		this.disk = new Disk();
+        this.disk = new Disk();
         this.state = {
             data: this.disk.requestData().items
         }
     }
 
     render() {
-        return(
-            <div id="main">
-                <div id="row-heading">
-                    <span>Номер файла</span>
-                    <span>Название файла</span>
-                    <span>Тип файла</span>
-                </div>
-                {this.state.data.map((item, index) => {
-                    return <Row key={index} index={index} item={item}/>
-                })}
+        return (
+            <div role="main" class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Индекс</th>
+                            <th scope="col">Имя файла</th>
+                            <th scope="col">Тип файла</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.data.map((item, index) => {
+                            return <Row key={index} index={index} item={item} />
+                        })}
+                    </tbody>
+                </table>
             </div>
-        )    
+
+
+        )
     }
 }
 
