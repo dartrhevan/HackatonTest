@@ -8,7 +8,7 @@ class Main extends React.Component {
         super();
 		this.disk = new Disk();
         this.state = {
-            data: this.disk.requestData(),
+            data: this.disk.requestData().items,
             path: this.disk.path,
             homePath: this.disk.path
         }
@@ -32,21 +32,21 @@ class Main extends React.Component {
 
     handleClick(item) {
         this.setState({path: this.deepening(this.state.path, item.name)}, () => {
-            const newData = this.disk.requestData(this.state.path);
+            const newData = this.disk.requestData(this.state.path).items;
             this.setState({data: newData});
         });    
     }
 
     goBack() {
         this.setState({path: this.emersion(this.state.path)}, () => {
-            const newData = this.disk.requestData(this.state.path);
+            const newData = this.disk.requestData(this.state.path).items;
             this.setState({data: newData});
         });
     }
 
     goHome() {
         this.setState({path: this.state.homePath}, () => {
-            const newData = this.disk.requestData(this.state.path);
+            const newData = this.disk.requestData(this.state.path).items;
             this.setState({data: newData});
         }); 
     }
