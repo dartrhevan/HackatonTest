@@ -9,7 +9,7 @@ const Header = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <a className="btn btn-outline-secondary" href="">Вход</a>
+                <a className="btn btn-outline-secondary" href="https://oauth.yandex.ru/authorize?response_type=code&client_id=3614a67fb38645fe90cc5fe066f84746">Вход</a>
             </div>
         </nav>
     )
