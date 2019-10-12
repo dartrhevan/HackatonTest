@@ -7,12 +7,12 @@ const Path = props => {
                 <div className="row">
                     <div className="col-2">
                         <div className="btn-group btn-group-lg" role="group" aria-label="...">
-                            <button type="button" className="btn btn-secondary"
-                                    onClick={() => props.goHome()}>Home</button>
+                            <button type="button" className="btn btn-outline-secondary"
+                                onClick={() => props.goHome()}><i class="fa fa-home fa-lg"></i></button>
                             {
                                 props.isBackExists && 
-                                <button type="button" className="btn btn-secondary" 
-                                        onClick={() => props.goBack()}>Back</button>
+                                <button type="button" class="btn btn-outline-secondary" 
+                                    onClick={() => props.goBack()}><i class="fa fa-arrow-left fa-lg"></i></button>
                             }
                         </div>
                     </div>

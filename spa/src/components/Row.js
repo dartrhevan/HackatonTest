@@ -4,8 +4,7 @@ import dateFormat from 'dateformat'
 const Row = props => {
     return(
         <tr onClick={props.handleClick} 
-            className={props.item.type === "dir" && ("bg-light text-dark cursor-pointer")} 
-            disabled={props.item.type !== "dir" && false}>
+            className={props.item.type === "dir" && ("bg-light text-dark cursor-pointer")}>
             <td id="type">
                 {
                     props.item.type === "dir" ?

@@ -17,6 +17,12 @@ class Main extends React.Component {
         this.goHome = this.goHome.bind(this);
     }
 
+    componentDidMount() {
+        if (this.state.data.length !== 0) {
+            this.props.sendState();
+        }
+    }
+
     emersion(path)
     {
         const index = path.lastIndexOf('/', path.length - 2);
