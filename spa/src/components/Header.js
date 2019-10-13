@@ -13,6 +13,10 @@ const Header = (props) => {
                     !props.isEntered &&
                     <a className="btn btn-outline-secondary" href="https://oauth.yandex.ru/authorize?response_type=code&client_id=3614a67fb38645fe90cc5fe066f84746&force_confirm=true">Вход</a>
                 }
+                {
+                    props.isEntered &&
+                    <a className="btn btn-outline-secondary" onClick={exit}>Выход</a>
+                }
             </div>
         </nav>
     )
