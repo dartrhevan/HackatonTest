@@ -18,7 +18,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.data.token !== null && this.state.data.token !== '' && this.state.data.token !== undefined) {
+        if (this.state.data.token !== "undefined") {
             this.props.sendState();
         }
     }
