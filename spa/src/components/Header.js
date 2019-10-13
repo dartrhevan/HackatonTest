@@ -7,7 +7,7 @@ const Header = (props) => {
                 <a className="navbar-brand" href="#">Просмотр файлов вашего Яндекс-Диска</a>
                 {
                     !props.isEntered &&
-                    <a className="btn btn-outline-secondary" href="https://oauth.yandex.ru/authorize?response_type=code&client_id=3614a67fb38645fe90cc5fe066f84746">Вход</a>
+                    <a className="btn btn-outline-secondary" href="https://oauth.yandex.ru/authorize?response_type=code&client_id=3614a67fb38645fe90cc5fe066f84746&force_confirm=true">Вход</a>
                 }
             </div>
         </nav>
