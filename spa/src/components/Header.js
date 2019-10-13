@@ -15,7 +15,7 @@ const Header = (props) => {
                 }
                 {
                     props.isEntered &&
-                    <a className="btn btn-outline-secondary" onClick={exit}>Выход</a>
+                    <a className="btn btn-outline-secondary" href="#" onClick={exit}>Выход</a>
                 }
             </div>
         </nav>
