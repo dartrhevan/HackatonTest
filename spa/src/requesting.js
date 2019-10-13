@@ -5,7 +5,7 @@ export default class Disk {
         this.applicationPassword = 'd12eb8df2d5946d3a74f54f91dcbc0aa';
         this.path = 'disk:/';
         this.params = this.parseQueryString();
-
+        this.token = undefined;
         if(this.params.hasOwnProperty('path'))
             this.path = this.params['path'];
 
@@ -36,7 +36,7 @@ export default class Disk {
         request.send(body);
         console.log(request.responseText);
         let response = JSON.parse(request.responseText);
-        if(!response.hasOwnProperty('access_token')) return null;
+        if(!response.hasOwnProperty('access_token')) return undefined;
 
         return  response.access_token;
     }

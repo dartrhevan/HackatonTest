@@ -18,7 +18,8 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.data.token !== "undefined") {
+        //console.log(this.disk.token);
+        if (this.disk.token !== undefined && this.disk.token !== 'undefined') {
             this.props.sendState();
         }
     }

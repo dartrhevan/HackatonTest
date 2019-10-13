@@ -1,6 +1,10 @@
 import React from 'react'
 
 const Header = (props) => {
+    const exit =() =>{
+        window.location.search ='';
+        window.location.reload();
+    };
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div className="container">
