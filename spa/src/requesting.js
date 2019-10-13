@@ -12,7 +12,7 @@ export default class Disk {
         if(this.params.hasOwnProperty('code')) {
             this.token = this.requestToken(this.params['code']);
         }
-
+        window.history.pushState('page1', 'disk', '/disk');
     }
 
     parseQueryString(strQuery = window.location.search) {
@@ -37,7 +37,6 @@ export default class Disk {
         console.log(request.responseText);
         let response = JSON.parse(request.responseText);
         if(!response.hasOwnProperty('access_token')) return undefined;
-
         return  response.access_token;
     }
 
