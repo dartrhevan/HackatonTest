@@ -11,7 +11,7 @@ class Main extends React.Component {
             data: this.disk.requestData().items,
             path: this.disk.path,
             homePath: this.disk.path
-        }
+        };
         this.handleClick = this.handleClick.bind(this);
         this.goBack = this.goBack.bind(this);
         this.goHome = this.goHome.bind(this);
@@ -39,6 +39,8 @@ class Main extends React.Component {
     handleClick(item) {
         this.setState({path: this.deepening(this.state.path, item.name)}, () => {
             const newData = this.disk.requestData(this.state.path).items;
+            let url = this.state.path.substr(6, this.state.path.length-1);
+            window.history.pushState('page2', 'item.name', '/disk/'+url);
             this.setState({data: newData});
         });    
     }
@@ -46,6 +48,7 @@ class Main extends React.Component {
     goBack() {
         this.setState({path: this.emersion(this.state.path)}, () => {
             const newData = this.disk.requestData(this.state.path).items;
+            window.history.go(-1);
             this.setState({data: newData});
         });
     }
@@ -53,6 +56,7 @@ class Main extends React.Component {
     goHome() {
         this.setState({path: this.state.homePath}, () => {
             const newData = this.disk.requestData(this.state.path).items;
+            window.history.pushState('page1', 'disk', '/disk');
             this.setState({data: newData});
         }); 
     }
