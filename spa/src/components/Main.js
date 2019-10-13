@@ -83,13 +83,14 @@ class Main extends React.Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.state.data.length === 0 ? "Каталог пуст..." :
+                                    this.state.data.length === 0 ? 
+                                    <div id="empty">Каталог пуст...</div> :
                                     this.state.data.map((item, index) => {
                                     return <Row key={index} 
                                                 index={index} 
                                                 item={item} 
                                                 handleClick={ item.type === "dir" && (() => this.handleClick(item))} />
-                                })}
+                            })}
                             </tbody>
                         </table>
                     </div>
