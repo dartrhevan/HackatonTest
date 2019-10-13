@@ -34,7 +34,6 @@ export default class Disk {
         request.open('POST', tokenRequestURL, false);
         request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         request.send(body);
-        console.log(request.responseText);
         let response = JSON.parse(request.responseText);
         if(!response.hasOwnProperty('access_token')) return undefined;
         return  response.access_token;
